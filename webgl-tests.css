@@ -1,0 +1,17 @@
+body { margin: 0; }
+
+canvas { z-index: 1; }
+#nav { z-index: 2; }
+
+#canvas-container, #nav { position: absolute; }
+#canvas-container { left: 0px; top: 0px; }
+
+#nav { left: 0px; top: 60px; }
+#nav li { padding-bottom: 10px; }
+#nav a { color: white; }
+#nav a:hover, #nav a.selected { color: green; }
+#nav a.selected {
+	cursor: default;
+	pointer-events: none;
+	text-decoration: none;
+}
