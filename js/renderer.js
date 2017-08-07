@@ -168,8 +168,6 @@ class Renderer {
 
 	_viewportResized() {
 		this._setCamera(this.camera);
-		//this.camera.aspect = window.innerWidth / window.innerHeight;
-		//this.camera.updateProjectionMatrix();
 		this.webglRenderer.setSize(window.innerWidth, window.innerHeight);
 	};
 };

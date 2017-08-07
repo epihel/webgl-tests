@@ -1,13 +1,12 @@
 var ADD_STATS = true;
-DEMO.renderer = new Renderer('#canvas-container', ADD_STATS);
+var CONTAINER_SELECTOR = '#canvas-container';
+DEMO.renderer = new Renderer(CONTAINER_SELECTOR, ADD_STATS);
 
 var SELECTED_CLASS = 'selected';
 var DEBUG = false;
 if (DEBUG) {
-	var canvas = $(containerSelector).find('canvas')[0];
-	var cxt = canvas.getContext(contextName);
-
-	var cxt = WebglUtils.getContext(containerSelector, 'webgl');
+	var canvas = $(CONTAINER_SELECTOR).find('canvas')[0];
+	var cxt = canvas.getContext('webgl');
 	WebGLDebugUtils.makeDebugContext(cxt, function(err, funcName, args) {
 		throw new Error(WebGLDebugUtils.glEnumToString(err) + ' was caused by call to: ' + funcName);
 	});
@@ -23,7 +22,6 @@ function runDemo(demoId) {
 }
 
 runDemo('BouncingObjects');
-//runDemo('Dolphins');
 
 var allLinks = $('#nav a');
 allLinks.each(function() {
