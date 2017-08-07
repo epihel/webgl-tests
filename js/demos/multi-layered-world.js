@@ -1,4 +1,4 @@
-DEMO.Dolphins = {
+DEMO.MultiLayeredWorld = {
 	run: function(cb) {
 		var fogColor = 0x72645b;
 		var lightColor = 0x777777;
@@ -21,18 +21,14 @@ DEMO.Dolphins = {
 		plane.position.y = -0.5;
 		plane.receiveShadow = true;
 
-		var dolphin = new Dolphin();
-
-		var comps = [
-			plane,
-			new THREE.AmbientLight(lightColor),
-			WebglUtils.createShadowedLight(1, 1, 1, 0xffffff, 1.35),
-			WebglUtils.createShadowedLight(0.5, 1, -1, shadowColor, 1),
-			dolphin
-		];
-
-		dolphin.load(function() {
-			cb(comps);
-		});
+		new THREE.PLYLoader().load('/models/dolphins.ply', function(geometry) {
+			cb([
+				plane,
+				new THREE.AmbientLight(lightColor),
+				WebglUtils.createShadowedLight(1, 1, 1, 0xffffff, 1.35),
+				WebglUtils.createShadowedLight(0.5, 1, -1, shadowColor, 1),
+				new Dolphins(geometry)
+			]);
+		}, WebglUtils.logLoadProgress, WebglUtils.logLoadError);
 	}
 };

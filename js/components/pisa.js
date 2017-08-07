@@ -1,4 +1,4 @@
-class Street extends ResponsiveComponent {
+class Pisa extends ResponsiveComponent {
 	constructor() {
 		super();
 		this.backgroundScene = new SkyboxScene('/models/pisa/', '.png');
@@ -14,21 +14,18 @@ class Street extends ResponsiveComponent {
 		this.mouseX = 0;
 		this.mouseY = 0;
 
-		/*
-		this.spheres = [];
+		// add reflective spheres
 		var geometry = new THREE.SphereGeometry(100, 32, 16);
-		var material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: skybox.textureCube });
-		_.times(500, function() {
+		var material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: this.backgroundScene.getTextureCube() });
+		for (var i = 0; i < 500; ++i) {
 			var mesh = new THREE.Mesh(geometry, material);
 			mesh.position.x = (Math.random() * 10000) - 5000;
 			mesh.position.y = (Math.random() * 10000) - 5000;
 			mesh.position.z = (Math.random() * 10000) - 5000;
 
 			mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
-
-			this.spheres.push(mesh);
-		}.bind(this));
-		*/
+			this.backgroundScene.add(mesh);
+		}
 
 		this.sceneHalfWidth = window.innerWidth / 2;
 		this.sceneHalfHeight = window.innerHeight / 2;
